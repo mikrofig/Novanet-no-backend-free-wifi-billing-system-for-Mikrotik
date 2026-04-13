@@ -6,7 +6,7 @@ This system allows MikroTik owners to accept Paystack payments directly on their
 ## 🚀 Deployment
 1. Connect to your MikroTik via WinBox.
 2. Open **Terminal**.
-3. Paste the Deployment Script found in `/scripts/setup.rsc`.
+3. Paste the Deployment Script found in `setup.rsc`.
 4. Enter your Paystack Key in the `login.html` file.
 
 ## Features
