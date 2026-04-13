@@ -1,5 +1,5 @@
 
-# 📡 NOVANET FREE WiFi Billing SYSTEM
+# 📡 NOVANET FREE WiFi Billing System
 
 This system allows MikroTik owners to accept Paystack payments directly on their routers without needing a VPS,vpn or a monthly billing service.
 
