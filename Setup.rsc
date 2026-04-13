@@ -139,13 +139,16 @@ add chain=input action=accept in-interface="NOVANET Main bridge" dst-address=1.2
 /ip dns static
 add name=novanet.webfig.com address=1.2.3.4
 
-#use this to get list of hospot users--------------
-{... :foreach i in=[/ip hotspot user find where comment~"Auto-"] do={
-{{...     :local uname [/ip hotspot user get $i name];
-{{...     :local upass [/ip hotspot user get $i password];
-{{...     :local uprof [/ip hotspot user get $i profile];
-{{...     :put ("Profile: " . $uprof . " -> {u: \"" . $uname . "\", p: \"" . $upa
-ss . "\"},");
-{{... }
-{... }
+# --- Use this to get your User Pool list for JavaScript ---
+{
+    :put "Generating User Pool for GitHub/JS..."
+    :foreach i in=[/ip hotspot user find where comment~"Auto-"] do={
+        :local uname [/ip hotspot user get $i name];
+        :local upass [/ip hotspot user get $i password];
+        :local uprof [/ip hotspot user get $i profile];
+        
+        # This prints exactly: {u: "username", p: "password"},
+        :put ("$uprof pool: {u: \"$uname\", p: \"$upass\"},");
+    }
+}
 
