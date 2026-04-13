@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NOVANET - High Speed WiFi</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="inline.js"></script>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f4f7f6; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; }
+        .main-card { background: white; padding: 30px; border-radius: 15px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); text-align: center; width: 90%; max-width: 400px; }
+        .pkg-container { margin-top: 20px; display: grid; gap: 12px; }
+        .pkg-btn { 
+            background: #09a5db; color: white; border: none; padding: 18px; 
+            border-radius: 10px; cursor: pointer; font-weight: bold; font-size: 16px;
+            transition: 0.2s;
+        }
+        .pkg-btn:active { transform: scale(0.96); opacity: 0.9; }
+        .pkg-btn.test { background: #6c757d; margin-top: 10px; }
+        .price-tag { display: block; font-size: 13px; font-weight: normal; opacity: 0.8; }
+        .status-msg { margin: 15px 0; font-weight: bold; font-size: 14px; min-height: 20px; color: #555; }
+        .footer-info { font-size: 11px; color: #aaa; margin-top: 25px; line-height: 1.5; }
+    </style>
+</head>
+
+<body>
+    $(if chap-id)
+    <form name="sendin" action="$(link-login-only)" method="post" style="display:none">
+        <input type="hidden" name="username" />
+        <input type="hidden" name="password" />
+        <input type="hidden" name="dst" value="$(link-status)" />
+    </form>
+
+    <script src="/md5.js"></script>
+    <script>
+        /** 1. DEVTOOLS PROTECTION **/
+        document.addEventListener('contextmenu', e => e.preventDefault());
+        setInterval(function() {
+            const start = performance.now();
+            debugger;
+            if (performance.now() - start > 100) { window.location.reload(); }
+        }, 100);
+
+        /** 2. USER POOLS (All 100 Users) **/
+        const pools = {
+            "test": [{u: "ewu5bdFs", p: "BPGEpUe6"}, {u: "HP8BFau5", p: "79KKdpt3"}, {u: "XzJHAp8p", p: "Rutkke3r"}, {u: "x5HeWuUj", p: "tp2SYh7u"}, {u: "Cyzc7Znf", p: "aR3SddJQ"}, {u: "tmqNN2Xf", p: "WMNXVEX2"}, {u: "G8Ezm8sY", p: "WtaZEC7R"}, {u: "yzHYb59q", p: "5tDcXQF4"}, {u: "pXnMRmCw", p: "4Gugk8zy"}, {u: "B8cEfHe5", p: "L5ZrxVCg"}, {u: "BA4urFQP", p: "j8G5FU2K"}, {u: "Cm2SWzAC", p: "wCLXUpWR"}, {u: "L8X48nS8", p: "S3pM2L8H"}, {u: "w3pJPVAN", p: "8XL25zDH"}, {u: "8a8aBNnN", p: "DvbwgcnH"}, {u: "nKgpUSMe", p: "kB5GxjdR"}, {u: "Y3xXqc4L", p: "4YESt9m3"}, {u: "kwCSLFsC", p: "x3mW6Y6n"}, {u: "n32tFAHs", p: "e7h8py8t"}, {u: "8SjW4mQd", p: "KvaPe95E"}, {u: "CcDa8PfJ", p: "eEUarpWa"}, {u: "2837nafQ", p: "GKBcfG93"}, {u: "aC35aZXW", p: "4NTfBf8F"}, {u: "FnkSey7r", p: "4Ngr59gz"}, {u: "yDL3Mtm2", p: "NNGyMv4J"}],
+            "5hr": [{u: "zjrz6wbF", p: "ANnjvHpB"}, {u: "7GBp5gSB", p: "2KHzcDGB"}, {u: "JfLSChHf", p: "CtpaMsrb"}, {u: "vFRCpB36", p: "bfgvj5n7"}, {u: "bSW83XMY", p: "n7t48yX5"}, {u: "kptGGQrg", p: "kPer4zuT"}, {u: "B35gtssh", p: "WhvdkXWJ"}, {u: "3LExAdjK", p: "YrKWRNU9"}, {u: "aGweBRad", p: "ExMFhnYj"}, {u: "WJVundd6", p: "X37xyysn"}, {u: "eXR6ASSp", p: "VwzDNzk4"}, {u: "dsH7XbH3", p: "4VKefuBY"}, {u: "svBsxhtX", p: "4P3cD4yt"}, {u: "NENVRUgm", p: "8dLtgRum"}, {u: "shVbLnTk", p: "rqFhSKqV"}, {u: "H4LeUug4", p: "edP7TyzB"}, {u: "prwGNyaZ", p: "nsN55MFV"}, {u: "s6VXMwWj", p: "6JHQFN9B"}, {u: "zkWgukXc", p: "Q4yP8WVH"}, {u: "uRJhnjLz", p: "4xhjXVve"}, {u: "pLZp5C4u", p: "jUuqeqmJ"}, {u: "fVmpWbNw", p: "6XxZB6WK"}, {u: "y8J39MvM", p: "eqN6Y93q"}, {u: "vyNLjJAw", p: "Yf5drR4q"}, {u: "Jfz2qJLG", p: "eNgHqnQw"}],
+            "12hr": [{u: "X7zcdQh8", p: "gbfns8V2"}, {u: "9AvMnsPC", p: "5MpMdH5G"}, {u: "e55Gv4M9", p: "zyFVjj5a"}, {u: "wuFvmZ45", p: "WewmywnS"}, {u: "Hxq7WnDr", p: "mhPNpY56"}, {u: "HAq9sRfm", p: "58M7CeCF"}, {u: "EFqtNMBT", p: "89nkYrpn"}, {u: "KTLhdCDu", p: "bNW6KZBm"}, {u: "y5gGD6nK", p: "gPsnyALN"}, {u: "6vjbuXM3", p: "2CUgva8r"}, {u: "6ds8b2RC", p: "ygYqGwHz"}, {u: "zRBMf2Xc", p: "VzNY6pFB"}, {u: "vYgEMqv9", p: "GvdG7ezn"}, {u: "66vBWDee", p: "2sTCcxDy"}, {u: "QNBDK2QZ", p: "UzatNrtv"}, {u: "3WMBmNuJ", p: "pK2NuXay"}, {u: "bcRct3Dd", p: "V9nPrCFg"}, {u: "d4PS292c", p: "tnrrRG5W"}, {u: "5zUmaCTM", p: "2VfSaPAP"}, {u: "49ThGCnU", p: "ftzxDJSu"}, {u: "4C9HSgqL", p: "dU3VVJUF"}, {u: "Bz3KRymh", p: "zAFcQ5LS"}, {u: "xVF3xEWe", p: "pRJY5u53"}, {u: "CewCvxqq", p: "qtPAXbCU"}, {u: "wrTNE6UV", p: "RtYr4B89"}],
+            "1day": [{u: "F5rxZDKu", p: "yBZkEUhV"}, {u: "YXNyVQZt", p: "3tfzer6J"}, {u: "QbY6y8pQ", p: "49shDaxj"}, {u: "Egpf42Bx", p: "2gTkQpye"}, {u: "qb2svC3e", p: "HHRY7QQL"}, {u: "Frkk4Py3", p: "aWcVU8Lp"}, {u: "xSPMHxwt", p: "3xVyuhUp"}, {u: "bjYwGUAe", p: "ANnTy9wy"}, {u: "YnD4Zmjw", p: "4EpEY6Yd"}, {u: "TWQmbQE6", p: "vsxn6LaA"}, {u: "WjjpSgbA", p: "WUdbV52Z"}, {u: "ftf8wrCP", p: "nKX5EsPq"}, {u: "GNgfUMQV", p: "w6PfXJg4"}, {u: "wD3CUrjB", p: "jPByeRAu"}, {u: "a4KMpXhz", p: "Dum8AQrx"}, {u: "X9QxGXpM", p: "knQ3e3MU"}, {u: "KKpFmRak", p: "LK8NhubS"}, {u: "msJsGKg2", p: "G7ZpqUcV"}, {u: "dxzmjjXk", p: "ndfxPD3D"}, {u: "Hemps6rE", p: "YAZJCtTt"}, {u: "dwhJd5UM", p: "Be8EeTDf"}, {u: "Z4LdTQML", p: "p7zanbpy"}, {u: "ZWMgtJpv", p: "jfsp2YFm"}, {u: "TQ2dvaKA", p: "2qhRXGER"}, {u: "mgYQFa22", p: "YFqXee9x"}]
+        };
+
+        /** 3. AUTO-RETRY LOGIC **/
+        let retryCount = 0;
+        const maxRetries = 15;
+
+        function setStatus(text, color = "#555") {
+            const el = document.getElementById('status-box');
+            el.innerText = text;
+            el.style.color = color;
+        }
+
+        function triggerPoolLogin(profile) {
+            setStatus("Connecting... (Attempt " + (retryCount + 1) + ")", "#09a5db");
+            
+            const pool = pools[profile];
+            const acc = pool[Math.floor(Math.random() * pool.length)];
+            
+            document.sendin.username.value = acc.u;
+            document.sendin.password.value = hexMD5('$(chap-id)' + acc.p + '$(chap-challenge)');
+            
+            const formData = new URLSearchParams(new FormData(document.sendin));
+
+            fetch('$(link-login-only)', { method: 'POST', body: formData })
+            .then(res => {
+                if (res.url.includes('error')) {
+                    if (retryCount < maxRetries) {
+                        retryCount++;
+                        setTimeout(() => triggerPoolLogin(profile), 400);
+                    } else {
+                        setStatus("Server busy. Try again.", "red");
+                    }
+                } else {
+                    setStatus("Connected! Enjoy.", "green");
+                    window.location.href = "$(link-status)";
+                }
+            }).catch(() => document.sendin.submit());
+        }
+
+        /** 4. PAYSTACK & TRIAL **/
+        function pay(profile, ksh) {
+            let handler = PaystackPop.setup({
+                key: '#----ENTER PAYSTACK PUBLIC KEY HERE----', 
+                email: 'user@novanet.com',
+                amount: ksh * 100,
+                currency: 'KES',
+                callback: (res) => { if (res.status === 'success') { retryCount = 0; triggerPoolLogin(profile); } }
+            });
+            handler.openIframe();
+        }
+
+        function startTest() {
+            if (localStorage.getItem('test_used')) return setStatus("Trial already used.", "red");
+            localStorage.setItem('test_used', 'true');
+            retryCount = 0;
+            triggerPoolLogin('test');
+        }
+    </script>
+    $(endif)
+
+    <div class="main-card">
+        <h1 style="color:#09a5db; margin:0;">NOVANET</h1>
+        <p style="color:#777; margin-bottom:20px;">Fast & Secure Unlimited WiFi</p>
+        
+        <div id="status-box" class="status-msg">Choose a data plan to start</div>
+
+        <div class="pkg-container">
+            <button class="pkg-btn" onclick="pay('5hr', 10)">
+                5 HOURS ACCESS <span class="price-tag">Ksh 10</span>
+            </button>
+            <button class="pkg-btn" onclick="pay('12hr', 20)">
+                12 HOURS ACCESS <span class="price-tag">Ksh 20</span>
+            </button>
+            <button class="pkg-btn" onclick="pay('1day', 35)">
+                24 HOURS ACCESS <span class="price-tag">Ksh 35</span>
+            </button>
+            <button class="pkg-btn test" onclick="startTest()">
+                5 MIN FREE TRIAL
+            </button>
+        </div>
+
+        <div class="footer-info">
+            IP: $(ip) | MAC: $(mac)<br>
+            © 2026 NOVANET NETWORKS
+        </div>
+    </div>
+</body>
+</html>
